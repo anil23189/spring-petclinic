@@ -126,3 +126,11 @@ CREATE TABLE visits (
 );
 ALTER TABLE visits ADD CONSTRAINT fk_visits_pets FOREIGN KEY (pet_id) REFERENCES pets (id);
 CREATE INDEX visits_pet_id ON visits (pet_id);
+
+declare
+    lastSeq number;
+begin
+    SELECT MAX(ID) + 1 INTO lastSeq FROM pets;
+    if lastSeq IS NULL then lastSeq := 1; end if;
+    execute immediate 'CREATE SEQUENCE SEQUENCE_PET INCREMENT BY 1 START WITH ' || lastSeq || ' MAXVALUE 999999999 MINVALUE 1 NOCACHE';
+end;
