@@ -21,6 +21,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.SequenceGenerator;
 
 /**
  * Simple JavaBean domain object with an id property. Used as a base class for objects
@@ -32,7 +33,8 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class BaseEntity implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQUENCE_PET")
+    @SequenceGenerator(name="SEQUENCE_PET", sequenceName="SEQUENCE_PET", allocationSize=1)
     private Integer id;
 
     public Integer getId() {
