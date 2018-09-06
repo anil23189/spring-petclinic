@@ -138,6 +138,7 @@
 								<java.source>${maven.compiler.source}</java.source>
 								<java.target>${maven.compiler.target}</java.target>
 							</additionalProperties>
+							<includeSystemScope>true</includeSystemScope>
 						</configuration>
 					</execution>
 				</executions>
