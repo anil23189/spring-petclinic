@@ -11,7 +11,7 @@ pipeline {
     
      stage('Checkout'){    
        steps {
-          sh "git checkout ${env.BRANCH_NAME}"               
+          checkout([$class: 'GitSCM', branches: [[name: '*/poc5']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '2b270278-6842-45b3-b483-8a223069238d', url: 'https://github.com/anil23189/spring-petclinic.git']]])              
        }
      }
      stage ('Java Build') {
